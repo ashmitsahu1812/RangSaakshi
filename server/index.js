@@ -13,7 +13,7 @@ app.use(cors());
 app.use(express.json({ limit: '50mb' }));
 
 // Database setup
-const dbPath = path.join(__dirname, 'narcproof.db');
+const dbPath = path.join(__dirname, 'rangsaakshi.db');
 const db = new Database(dbPath);
 
 // Create tables
@@ -264,7 +264,7 @@ demoData.forEach(d => seedStmt.run(...d));
 });
 
 app.listen(PORT, () => {
-  console.log(`\n  🧪 NarcProof API Server running on http://localhost:${PORT}`);
+  console.log(`\n  🧪 RangSaakshi API Server running on http://localhost:${PORT}`);
   console.log(`  📊 Health: http://localhost:${PORT}/api/health`);
   console.log(`  🗺️  Intelligence: http://localhost:${PORT}/api/intelligence`);
   console.log(`  ⚠️  Batches: http://localhost:${PORT}/api/batches\n`);

@@ -70,7 +70,7 @@ export default function VerifyPage() {
           ✓ Evidence Verification Portal
         </h1>
         <p style={{ color: 'var(--text-secondary)', margin: 0 }}>
-          Verify the integrity of NarcProof evidence files. Check file hashes, 
+          Verify the integrity of RangSaakshi evidence files. Check file hashes, 
           validate video chain integrity, or verify SMS backup proofs.
         </p>
       </div>
@@ -272,7 +272,7 @@ export default function VerifyPage() {
         <div className="glass-card animate-fade-in">
           <h2 style={{ marginTop: 0 }}>✉ SMS Backup Verification</h2>
           <p style={{ color: 'var(--text-secondary)', fontSize: '14px' }}>
-            In dead zones, NarcProof texts the record&apos;s hash, time, and GPS to an NCB number. 
+            In dead zones, RangSaakshi texts the record&apos;s hash, time, and GPS to an NCB number. 
             The server&apos;s receipt time proves the record existed at that moment.
           </p>
 
@@ -303,7 +303,7 @@ export default function VerifyPage() {
               </div>
               <div style={{ fontSize: '13px', color: 'var(--text-secondary)', lineHeight: '1.7' }}>
                 1. When the test completes, the app computes the final chain hash.<br />
-                2. If there&apos;s no internet, it sends an SMS: <code style={{ background: 'var(--surface-2)', padding: '2px 6px', borderRadius: '4px' }}>NARCPROOF|[hash]|[timestamp]|[lat,lng]</code><br />
+                2. If there&apos;s no internet, it sends an SMS: <code style={{ background: 'var(--surface-2)', padding: '2px 6px', borderRadius: '4px' }}>RANGSAAKSHI|[hash]|[timestamp]|[lat,lng]</code><br />
                 3. The NCB server logs the receipt time — this is a trusted third-party timestamp.<br />
                 4. Even without internet, the hash proves the record existed at the SMS time.
               </div>

@@ -3,7 +3,7 @@ import { FlaskConical, LayoutDashboard, GraduationCap, Target, ShieldCheck } fro
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "NarcProof — Four Proofs. One Record. Zero Doubt.",
+  title: "RangSaakshi — Four Proofs. One Record. Zero Doubt.",
   description: "Forensic-grade drug field testing with cryptographic video evidence, multi-reagent inference, and BSA Section 63 certification.",
   keywords: "drug testing, forensic evidence, NDPS, field test, narcotics, SIH 2026",
 };
@@ -36,9 +36,9 @@ export default function RootLayout({
                 fontSize: '18px',
                 fontWeight: '800',
                 color: 'white',
-              }}>N</div>
+              }}>R</div>
               <span style={{ fontSize: '18px', fontWeight: '700', color: 'var(--text-primary)' }}>
-                Narc<span style={{ color: 'var(--accent)' }}>Proof</span>
+                Rang<span style={{ color: 'var(--accent)' }}>Saakshi</span>
               </span>
             </a>
             

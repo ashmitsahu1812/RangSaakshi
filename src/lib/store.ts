@@ -1,11 +1,11 @@
 /**
- * IndexedDB Store for NarcProof
+ * IndexedDB Store for RangSaakshi
  * Handles offline storage of test records, videos, and evidence
  */
 
 import { TestRecord } from './types';
 
-const DB_NAME = 'NarcProofDB';
+const DB_NAME = 'RangSaakshiDB';
 const DB_VERSION = 1;
 
 const STORES = {

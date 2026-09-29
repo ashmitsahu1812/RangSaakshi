@@ -1,5 +1,5 @@
 /**
- * Type definitions for the NarcProof application
+ * Type definitions for the RangSaakshi application
  */
 
 import { HashChainLink } from './hashChain';

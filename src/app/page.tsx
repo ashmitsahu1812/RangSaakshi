@@ -368,7 +368,7 @@ export default function LandingPage() {
         color: 'var(--text-muted)',
         fontSize: '13px',
       }}>
-        NarcProof v1.0.0 — Smart India Hackathon 2026 — PS SIH1765
+        RangSaakshi v1.0.0 — Smart India Hackathon 2026 — PS SIH1765
         <br />Four Proofs. One Record. Zero Doubt.
       </footer>
     </div>
