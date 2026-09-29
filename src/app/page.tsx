@@ -86,43 +86,15 @@ export default function LandingPage() {
     <div style={{ minHeight: '100vh' }}>
       {/* Hero Section */}
       <section style={{
-        background: 'var(--gradient-hero)',
+        backgroundColor: '#ffffff',
+        backgroundImage: `
+          radial-gradient(at 0% 0%, rgba(186, 230, 253, 0.6) 0px, transparent 60%),
+          radial-gradient(at 40% 100%, rgba(187, 247, 208, 0.4) 0px, transparent 60%)
+        `,
         position: 'relative',
         overflow: 'hidden',
-        padding: '80px 24px 100px',
+        padding: '120px 24px 140px',
       }}>
-        {/* Animated Grid Background */}
-        <div style={{
-          position: 'absolute',
-          inset: 0,
-          backgroundImage: `
-            linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px)
-          `,
-          backgroundSize: '50px 50px',
-        }} />
-
-        {/* Floating Orbs */}
-        <div style={{
-          position: 'absolute',
-          top: '10%',
-          left: '10%',
-          width: '300px',
-          height: '300px',
-          borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(59,130,246,0.08), transparent 70%)',
-          animation: 'float 6s ease-in-out infinite',
-        }} />
-        <div style={{
-          position: 'absolute',
-          bottom: '10%',
-          right: '15%',
-          width: '250px',
-          height: '250px',
-          borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(139,92,246,0.08), transparent 70%)',
-          animation: 'float 8s ease-in-out infinite 2s',
-        }} />
 
         <div style={{
           maxWidth: '1200px',
