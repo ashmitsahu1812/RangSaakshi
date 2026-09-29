@@ -86,11 +86,7 @@ export default function LandingPage() {
     <div style={{ minHeight: '100vh' }}>
       {/* Hero Section */}
       <section style={{
-        backgroundColor: '#ffffff',
-        backgroundImage: `
-          radial-gradient(at 0% 0%, rgba(186, 230, 253, 0.6) 0px, transparent 60%),
-          radial-gradient(at 40% 100%, rgba(187, 247, 208, 0.4) 0px, transparent 60%)
-        `,
+        background: 'transparent',
         position: 'relative',
         overflow: 'hidden',
         padding: '120px 24px 140px',
