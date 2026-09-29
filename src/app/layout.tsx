@@ -58,7 +58,7 @@ export default function RootLayout({
               <a href="/verify" className="btn-secondary">
                 <ShieldCheck size={16} /> Verify
               </a>
-              <a href="/about" className="btn-secondary" style={{ marginLeft: '8px' }}>
+              <a href="/" className="btn-secondary" style={{ marginLeft: '8px' }}>
                 About
               </a>
             </div>
