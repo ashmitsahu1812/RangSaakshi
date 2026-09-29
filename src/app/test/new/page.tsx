@@ -561,6 +561,13 @@ export default function NewTestPage() {
     record.bsaCertificateData = certData;
     const text = generateCertificateText(certData);
     setCertificateText(text);
+
+    // Sync to live backend (non-blocking)
+    fetch('https://sih-260231.onrender.com/api/tests', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(record)
+    }).catch(err => console.error('Failed to sync test to backend:', err));
   }, [testId, officer, witnesses, hashChain, colorCurve, location, selectedKit, kitBarcode, kitBatchNumber, kitExpiryDate, activeReagents, blankControls, reagentResults, inferences, sampleWeight]);
 
   // ─── Step Navigation ───
