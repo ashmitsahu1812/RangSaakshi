@@ -163,7 +163,7 @@ export default function LandingPage() {
             <a href="/test/new" className="btn-primary" style={{ padding: '16px 36px', fontSize: '17px' }}>
               ⚗ Start New Test
             </a>
-            <a href="/" className="btn-secondary" style={{ padding: '16px 36px', fontSize: '17px' }}>
+            <a href="/dashboard" className="btn-secondary" style={{ padding: '16px 36px', fontSize: '17px' }}>
               <LayoutDashboard size={20} className="inline mr-2" /> View Dashboard
             </a>
           </div>
