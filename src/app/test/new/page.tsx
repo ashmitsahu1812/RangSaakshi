@@ -332,7 +332,7 @@ export default function NewTestPage() {
   const startCamera = useCallback(async () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({
-        video: { facingMode: 'environment', width: { ideal: 1280 }, height: { ideal: 720 } },
+        video: { facingMode: { ideal: 'environment' }, width: { ideal: 1280 }, height: { ideal: 720 } },
         audio: false,
       });
       setCameraStream(stream);
@@ -344,7 +344,7 @@ export default function NewTestPage() {
   const startFrontCamera = useCallback(async () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({
-        video: { facingMode: 'user', width: { ideal: 640 }, height: { ideal: 480 } },
+        video: { facingMode: { ideal: 'user' }, width: { ideal: 640 }, height: { ideal: 480 } },
         audio: false,
       });
       setSelfieStream(stream);
@@ -366,6 +366,18 @@ export default function NewTestPage() {
       selfieRef.current.play().catch(console.error);
     }
   }, [currentStep, selfieStream]);
+
+  // Ensure camera is started if we navigate to a step that needs it (e.g. via step indicator)
+  useEffect(() => {
+    const needsCamera = ['blank-control', 'video-start', 'reagent-test'].includes(currentStep);
+    if (needsCamera && !cameraStream) {
+      startCamera();
+    }
+    const needsFrontCamera = currentStep === 'officer-selfie';
+    if (needsFrontCamera && !selfieStream) {
+      startFrontCamera();
+    }
+  }, [currentStep, cameraStream, selfieStream, startCamera, startFrontCamera]);
 
   // ─── Recording with Hash Chain ───
   const startRecording = useCallback(async () => {
