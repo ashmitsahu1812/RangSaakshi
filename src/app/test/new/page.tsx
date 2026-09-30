@@ -642,11 +642,10 @@ export default function NewTestPage() {
         {steps.map((step, i) => (
           <div key={step.id} style={{ display: 'flex', alignItems: 'center' }}>
             <button
-              onClick={() => {
-                if (i < currentStepIndex) setCurrentStep(step.id);
-              }}
+              onClick={() => setCurrentStep(step.id)}
+              disabled={i >= currentStepIndex}
               className={`step-dot ${i < currentStepIndex ? 'completed' : i === currentStepIndex ? 'active' : 'pending'}`}
-              style={{ cursor: i < currentStepIndex ? 'pointer' : 'default' }}
+              style={{ cursor: i >= currentStepIndex ? 'default' : 'pointer' }}
               title={step.label}
             >
               {i < currentStepIndex ? '✓' : step.icon}
