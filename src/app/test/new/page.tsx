@@ -276,6 +276,10 @@ export default function NewTestPage() {
   // Voice Mode
   const [voiceMode, setVoiceMode] = useState(false);
 
+  // Camera Streams
+  const [cameraStream, setCameraStream] = useState<MediaStream | null>(null);
+  const [selfieStream, setSelfieStream] = useState<MediaStream | null>(null);
+
   // Get active reagents for the selected kit
   const activeReagents = selectedKit.id === 'custom'
     ? customReagents.map(id => REAGENTS[id]).filter(Boolean)
@@ -331,10 +335,7 @@ export default function NewTestPage() {
         video: { facingMode: 'environment', width: { ideal: 1280 }, height: { ideal: 720 } },
         audio: false,
       });
-      if (videoRef.current) {
-        videoRef.current.srcObject = stream;
-        await videoRef.current.play();
-      }
+      setCameraStream(stream);
     } catch (err) {
       console.error('Camera error:', err);
     }
@@ -346,14 +347,25 @@ export default function NewTestPage() {
         video: { facingMode: 'user', width: { ideal: 640 }, height: { ideal: 480 } },
         audio: false,
       });
-      if (selfieRef.current) {
-        selfieRef.current.srcObject = stream;
-        await selfieRef.current.play();
-      }
+      setSelfieStream(stream);
     } catch (err) {
       console.error('Front camera error:', err);
     }
   }, []);
+
+  useEffect(() => {
+    if (cameraStream && videoRef.current && videoRef.current.srcObject !== cameraStream) {
+      videoRef.current.srcObject = cameraStream;
+      videoRef.current.play().catch(console.error);
+    }
+  }, [currentStep, cameraStream]);
+
+  useEffect(() => {
+    if (selfieStream && selfieRef.current && selfieRef.current.srcObject !== selfieStream) {
+      selfieRef.current.srcObject = selfieStream;
+      selfieRef.current.play().catch(console.error);
+    }
+  }, [currentStep, selfieStream]);
 
   // ─── Recording with Hash Chain ───
   const startRecording = useCallback(async () => {

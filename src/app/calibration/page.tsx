@@ -32,6 +32,7 @@ export default function CalibrationPage() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [cameraActive, setCameraActive] = useState(false);
+  const [cameraStream, setCameraStream] = useState<MediaStream | null>(null);
   const [samples, setSamples] = useState<CalibrationSample[]>([]);
   const [currentLight, setCurrentLight] = useState(LIGHT_CONDITIONS[0]);
   const [currentLabel, setCurrentLabel] = useState('');
@@ -44,31 +45,35 @@ export default function CalibrationPage() {
       const stream = await navigator.mediaDevices.getUserMedia({
         video: { facingMode: 'environment', width: { ideal: 1280 }, height: { ideal: 720 } },
       });
-      if (videoRef.current) {
-        videoRef.current.srcObject = stream;
-        await videoRef.current.play();
-        setCameraActive(true);
-
-        // Start live sampling
-        liveIntervalRef.current = setInterval(() => {
-          if (!videoRef.current || !canvasRef.current) return;
-          const canvas = canvasRef.current;
-          const ctx = canvas.getContext('2d')!;
-          canvas.width = videoRef.current.videoWidth;
-          canvas.height = videoRef.current.videoHeight;
-          ctx.drawImage(videoRef.current, 0, 0);
-
-          const color = sampleColorFromCanvas(ctx,
-            Math.floor(canvas.width * 0.35), Math.floor(canvas.height * 0.35),
-            Math.floor(canvas.width * 0.3), Math.floor(canvas.height * 0.3)
-          );
-          setLiveColor(color);
-        }, 200);
-      }
+      setCameraStream(stream);
+      setCameraActive(true);
     } catch (err) {
       console.error('Camera error:', err);
     }
   }, []);
+
+  useEffect(() => {
+    if (cameraActive && cameraStream && videoRef.current && videoRef.current.srcObject !== cameraStream) {
+      videoRef.current.srcObject = cameraStream;
+      videoRef.current.play().catch(e => console.error(e));
+
+      if (liveIntervalRef.current) clearInterval(liveIntervalRef.current);
+      liveIntervalRef.current = setInterval(() => {
+        if (!videoRef.current || !canvasRef.current) return;
+        const canvas = canvasRef.current;
+        const ctx = canvas.getContext('2d')!;
+        canvas.width = videoRef.current.videoWidth;
+        canvas.height = videoRef.current.videoHeight;
+        ctx.drawImage(videoRef.current, 0, 0);
+
+        const color = sampleColorFromCanvas(ctx,
+          Math.floor(canvas.width * 0.35), Math.floor(canvas.height * 0.35),
+          Math.floor(canvas.width * 0.3), Math.floor(canvas.height * 0.3)
+        );
+        setLiveColor(color);
+      }, 200);
+    }
+  }, [cameraActive, cameraStream]);
 
   useEffect(() => {
     return () => {
