@@ -553,7 +553,7 @@ export default function NewTestPage() {
       bsaCertificateData: null!,
       createdAt: new Date().toISOString(),
       status: 'completed',
-      appVersion: '1.0.0-SIH2026',
+      appVersion: '1.0.0',
       sampleWeight: sampleWeight ? parseFloat(sampleWeight) : undefined,
     };
 

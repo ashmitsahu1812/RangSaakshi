@@ -5,7 +5,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "RangSaakshi — Four Proofs. One Record. Zero Doubt.",
   description: "Forensic-grade drug field testing with cryptographic video evidence, multi-reagent inference, and BSA Section 63 certification.",
-  keywords: "drug testing, forensic evidence, NDPS, field test, narcotics, SIH 2026",
+  keywords: "drug testing, forensic evidence, NDPS, field test, narcotics",
 };
 
 export default function RootLayout({

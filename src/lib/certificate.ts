@@ -11,7 +11,7 @@
 import { BSACertificateData, TestRecord } from './types';
 import { hashFile, getDeviceInfo } from './hashChain';
 
-const APP_VERSION = '1.0.0-SIH2026';
+const APP_VERSION = '1.0.0';
 
 export function generateCertificateData(record: TestRecord): BSACertificateData {
   return {
